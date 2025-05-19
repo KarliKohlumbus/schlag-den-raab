@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schlag den Star - Scoretafel</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="chart.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+  <!-- Spieleleiste -->
+  <div class="games-container" id="games-container"></div>
+
+  <!-- Scoreboard -->
+  <div class="scoreboard">
+    <!-- Spieler 1 -->
+    <div class="player" id="player1">
+      <h2>ANTON</h2>
+      <p class="score" id="score1">0</p>
+      <!-- Progress Bar Spieler 1 -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress1"></div>
+      </div>
+      <div class="game-grid" id="grid-player1"></div>
+    </div>
+
+    <!-- Spieler 2 -->
+    <div class="player" id="player2">
+      <h2>MORITZ</h2>
+      <p class="score" id="score2">0</p>
+      <!-- Progress Bar Spieler 2 -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress2"></div>
+      </div>
+      <div class="game-grid" id="grid-player2"></div>
+    </div>
+  </div>
+
+  <div class="game-list" id="game-list">
+    <h3>Spieleliste</h3>
+    <ul id="games-ul">
+      <!-- Platzhalter für Spielnamen -->
+      <li>1: <span id="game-name-1"></span></li>
+      <li>2: <span id="game-name-2"></span></li>
+      <li>3: <span id="game-name-3"></span></li>
+      <li>4: <span id="game-name-4"></span></li>
+      <li>5: <span id="game-name-5"></span></li>
+      <li>6: <span id="game-name-6"></span></li>
+      <li>7: <span id="game-name-7"></span></li>
+      <li>8: <span id="game-name-8"></span></li>
+      <li>9: <span id="game-name-9"></span></li>
+      <li>10: <span id="game-name-10"></span></li>
+      <li>11: <span id="game-name-11"></span></li>
+      <li>12: <span id="game-name-12"></span></li>
+      <li>13: <span id="game-name-13"></span></li>
+      <li>14: <span id="game-name-14"></span></li>
+      <li>15: <span id="game-name-15"></span></li>
+    </ul>
+  </div>
+
+  <!-- Steuerung -->
+  <div class="controls">
+    <button onclick="awardGame(1)">Anton gewinnt</button>
+    <button onclick="awardGame(2)">Moritz gewinnt</button>
+    <button onclick="resetScores()">Reset</button>
+    <button onclick="showChart()">Punktetorte anzeigen</button>
+  </div>
+
+  <!-- Diagramm-Overlay -->
+<div id="chart-overlay">
+  <div class="chart-container">
+    <div id="chart-header">NACH <span id="chart-played">0</span> SPIELEN</div>
+    <canvas id="gamePieChart" width="300" height="300"></canvas>
+    <div class="chart-labels">
+      <div>GESPIELTE PUNKTE</div>
+      <div class="value-box" id="points-played">0</div>
+      <div>OFFENE PUNKTE</div>
+      <div class="value-box" id="points-left">0</div>
+      <button onclick="closeChart()">Weiter</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+  <div id="focus-overlay"></div>
+</body>
+</html>

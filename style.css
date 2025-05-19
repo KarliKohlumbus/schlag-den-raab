@@ -1,0 +1,375 @@
+/* Allgemeines Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Rahmen um die gesamte Scoretafel */
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 30%;
+  padding: 20px;
+  border: 5px solid black;
+  background: linear-gradient(to bottom, #ffcc00, #ff9900);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Spielerbereich */
+.player {
+  text-align: center;
+  width: 45%;
+  padding: 0px;
+}
+
+/* Spielernamen */
+.player h2 {
+  font-size: 60px;
+  font-weight: bold;
+  color: black;
+  text-shadow: -1px -1px 0 silver, 1px -1px 0 silver, -1px 1px 0 silver, 1px 1px 0 silver;
+  margin-bottom: 5px;
+  margin-top: 35px;
+}
+
+/* Punktestand */
+.score {
+  font-size: 100px;
+  font-weight: bold;
+  color: silver;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0;
+}
+
+/* Fortschrittsbalken Container */
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  margin: 20px 0 40px 0;
+  overflow: hidden;
+  border: 2px solid silver;
+}
+
+/* Fortschrittsbalken */
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: red;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Spielgitter */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.game-box {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  color: silver;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
+.winner-player1 {
+  background-color: white;
+  color: black;
+  font-size: 30px;
+}
+
+.winner-player2 {
+  background-color: white;
+  color: black;
+  font-size: 30px;
+}
+
+/* Spieleleiste */
+.games-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -45px;
+  width: 100%;
+  position: relative;
+}
+
+.games-container .game-box {
+  position: relative;
+  margin: 0 3px;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.games-container .played {
+  background-color: black;
+  color: black;
+}
+
+/* Steuerung */
+.controls {
+  margin-top: 20px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: black;
+  color: silver;
+  border: 2px solid silver;
+  border-radius: 5px;
+}
+
+.controls button:hover {
+  background-color: silver;
+  color: black;
+}
+
+#chart-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+.chart-container {
+  padding-top: 80px;
+  background: linear-gradient(to bottom, #ffcc00, #ff9900);
+  padding: 40px 50px 30px 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #000;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+}
+
+#gamePieChart {
+  width: 500px !important;
+  height: 500px !important;
+  background: white;
+  border-radius: 50%;
+}
+
+.chart-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  align-items: center;
+}
+
+.chart-labels .value-box {
+  background: black;
+  color: white;
+  padding: 10px 25px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+#chart-header {
+  margin-bottom: 10px;
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  font-size: 24px;
+  font-weight: bold;
+  background: white;
+  padding: 5px 20px;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* Gelber Button wie im Screenshot */
+.chart-labels button {
+  background: linear-gradient(to bottom, #ffee00, #ffbb00);
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 30px;
+  border: 3px solid #444;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #888;
+  transition: all 0.2s ease;
+}
+
+.chart-labels button:hover {
+  background: linear-gradient(to bottom, #fff000, #ffc000);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Spieleliste fest positionieren rechts neben der Scoretafel */
+.game-list {
+  position: absolute;
+  top: 200px;
+  left: calc(50% + 400px); /* vorher 250px → weiter nach rechts */
+  width: 220px;
+  background: white;
+  padding: 15px;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.game-list h3 {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.game-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.game-list li {
+  font-size: 16px;
+  padding: 4px 0;
+}
+
+.game-list li span {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.game-list li span.visible {
+  opacity: 1;
+}
+
+.game-list span {
+  color: black !important;
+  font-weight: bold;
+  font-size: 16px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#game-fly-in {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-size: 60px;
+  font-weight: bold;
+  color: black;
+  background: white;
+  padding: 20px 40px;
+  border: 4px solid black;
+  border-radius: 12px;
+  z-index: 2000;
+  opacity: 1;
+  pointer-events: none;
+  animation: spinHold 3.5s ease-in-out forwards;
+}
+
+@keyframes spinHold {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(1.05) rotateY(720deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05) rotateY(720deg);
+    opacity: 1;
+  }
+}
+
+.fly-to-target {
+  transition: all 1.5s ease-in-out;
+}
+
+@keyframes finalSpin {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    text-shadow: 0 0 10px gold;
+  }
+  50% {
+    transform: translate(-50%, -52%) scale(1.15) rotateY(360deg) rotateX(3deg);
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(1.1) rotateY(720deg) rotateX(-3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05) rotateY(720deg) rotateX(0deg);
+  }
+}
+
+#game-fly-in.final {
+  animation: finalSpin 4s ease-in-out forwards;
+  color: gold;
+  border-color: goldenrod;
+  text-shadow: 0 0 12px gold;
+  background: #222;
+}
+
+#focus-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: none;
+}
+
+.game-list li.final span {
+  color: gold;
+  font-weight: bold;
+  text-shadow: 0 0 8px goldenrod;
+}
+
